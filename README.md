@@ -1,7 +1,7 @@
 # lein-scm-source
 
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.zalando.stups/friboo/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.zalando.stups/friboo)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.zalando.stups/lein-scm-source/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.zalando.stups/lein-scm-source)
 
 A Leiningen plugin to generate a `scm-source.json` file according to the [STUPS documentation](http://stups.readthedocs.org/en/latest/user-guide/application-development.html#docker).
 
