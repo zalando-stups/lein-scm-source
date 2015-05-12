@@ -1,4 +1,4 @@
-(defproject org.zalando.stups/lein-scm-source "0.1.0-SNAPSHOT"
+(defproject org.zalando.stups/lein-scm-source "0.1.0"
   :description "Generates source control origin information file."
   :url "https://github.com/zalando-stups/lein-scm-source"
 
