@@ -1,7 +1,8 @@
 (ns leiningen.scm-source
   (:require [clojure.java.shell :as sh]
             [clojure.string :as string]
-            [clojure.data.json :as json]))
+            [clojure.data.json :as json]
+            [clojure.java.io :as io]))
 
 (defn exec
   "Execute a shell command and return its output. Throws an exception on error."
@@ -15,8 +16,8 @@
   "Generates the 'scm-source.json' according to the STUPS documentation."
   [project & args]
   (->> {:revision (exec "git" "rev-parse" "HEAD")
-        :url      (exec "git" "config" "--get" "remote.origin.url")
+        :url      (str "git:" (exec "git" "config" "--get" "remote.origin.url"))
         :status   (exec "git" "status" "--porcelain")
         :author   (exec "id" "-un")}
        (json/write-str)
-       (spit "scm-source.json")))
+       (spit (io/file (:target-path project) "scm-source.json"))))
