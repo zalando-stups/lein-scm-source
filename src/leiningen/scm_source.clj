@@ -12,6 +12,11 @@
       (throw (IllegalStateException. (str (apply string/join " " cmd) " exited with " (:exit result) ": " (:err result)))))
     (string/trim (:out result))))
 
+(defn- write [target-path content]
+  (let [f (io/file target-path "scm-source.json")]
+    (io/make-parents f)
+    (spit f content)))
+
 (defn scm-source
   "Generates the 'scm-source.json' according to the STUPS documentation."
   [project & args]
@@ -20,4 +25,4 @@
         :status   (exec "git" "status" "--porcelain")
         :author   (exec "id" "-un")}
        (json/write-str)
-       (spit (io/file (:target-path project) "scm-source.json"))))
+       (write (:target-path project))))
