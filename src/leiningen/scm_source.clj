@@ -9,7 +9,7 @@
   [& cmd]
   (let [result (apply sh/sh cmd)]
     (when-not (zero? (:exit result))
-      (throw (IllegalStateException. (str (apply string/join " " cmd) " exited with " (:exit result) ": " (:err result)))))
+      (throw (IllegalStateException. (str (string/join " " cmd) " exited with " (:exit result) ": " (:err result)))))
     (string/trim (:out result))))
 
 (defn- write [target-path content]
